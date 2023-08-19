@@ -1,0 +1,2 @@
+# Set specific line endings for files in the tzdata directory
+tzdata/* text eol=lf
