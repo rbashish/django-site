@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "rbsite/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "rbsite/wsgi.py"
+      }
+    ]
+}
