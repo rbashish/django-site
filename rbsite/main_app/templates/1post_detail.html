@@ -1,0 +1,91 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <style>
+        /* Basic styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Flexbox for tags and date */
+.tags-date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Divider line */
+.divider {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Image styling */
+.post-image {
+    width: 768px;
+    height: 512px;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+/* Sticky column */
+.sticky-column {
+    position: sticky;
+    top: 20px;
+    width: 189px;
+}
+
+/* Two-column layout using Grid */
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 759px 189px;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Scrollable post details */
+.post-details {
+    max-height: 13317px; /* Adjust this value as needed */
+    overflow-y: scroll;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .two-column-layout {
+        grid-template-columns: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Title of the Post</h1>
+
+        <div class="tags-date">
+            <div class="tags">Tags: Tag 1, Tag 2</div>
+            <div class="date-time">August 19, 2023 - 5 minutes read</div>
+        </div>
+
+        <hr class="divider">
+
+        <img class="post-image" src="{% static 'your-image.jpg' %}" alt="Image Alt Text">
+        <a class="image-source" href="#">Image Source</a>
+
+        <div class="two-column-layout">
+            <div class="post-details">
+                <!-- Your long post content here -->
+            </div>
+            <div class="sticky-column">
+                <p>Sticky Content</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

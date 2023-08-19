@@ -1,0 +1,60 @@
+
+
+       body {
+           /*background-image: linear-gradient(to top,#455a64 0,#263238 100%);*/
+           background: #455a64;
+        }
+        
+        input {
+            color: #ffffff;
+           
+        }
+        
+        input[type] {
+             background: #455a64 !important;
+        }
+        textarea {
+            color: #ffffff !important;
+            background: #455a64;
+        }
+        
+        .lead {
+            font-weight: 400;
+            color: #ffffff;
+            font-family: 'Nunito', sans-serif;
+        }
+      #top1 {
+            color: #263238;
+            /*color:#111;*/
+
+        }
+        
+        .navbar {
+			position: relative;
+			min-height: 30px;
+			margin-bottom: 0px;
+			border: 0px solid transparent;
+        }
+        
+        .navbar-inverse {
+            background-image: linear-gradient(to top,#455a64 0,#111 100%) !important;
+            /*background:#000;*/
+        }
+        
+        .navbar-inverse .navbar-nav>li>a {
+            font-weight: normal;
+        }
+        
+        .jumbotron {
+            height: 30px !important;
+        }
+		.jumbotron {
+		    padding-top: 20px;
+            padding-bottom: 60px !important;
+			margin-bottom: 0px;
+			background-color: #fff;
+	    }
+	
+		.bg--dark {
+             background: #263238;
+        }
