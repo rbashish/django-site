@@ -1,0 +1,145 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block content %} 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!--CSS post layout start-->
+<style>
+    /* Styles for post header */
+    .post-header {
+        padding: 20px 0;
+    }
+
+    .post-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #888;
+        font-size: 14px;
+    }
+
+    .tags {
+        flex-grow: 1;
+    }
+
+    .read-time {
+        flex-shrink: 0;
+        margin-left: 10px;
+    }
+
+    /* Style for post image */
+    .post-image img {
+        width: 768px;
+        height: 512px;
+        margin: 20px 0;
+    }
+
+    .image-source {
+        text-align: center;
+        font-size: 14px;
+        color: #888;
+    }
+
+    /* Styles for post content wrapper */
+    .post-content-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .post-details {
+        width: 759px;
+    }
+
+    /* Styles for fixed column */
+    .fixed-column {
+        width: 200px;
+        position: sticky;
+        top: 100px; /* Adjust this value as needed */
+        height: calc(100vh - 100px); /* Adjust this value as needed */
+        padding-left: 20px;
+        background-color: #f7f7f7;
+    }
+
+    .fixed-content {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .fixed-column {
+            display: none;
+        }
+    }
+</style>
+<!--End of CSS post layout-->
+<!--start of scroll effec toc-->
+<script>
+    $(document).ready(function(){
+        // Enable Scrollspy
+        $('body').scrollspy({ target: '.table-of-contents', offset: 100 });
+    
+        // Smooth scrolling for anchor links
+        $('a[href^="#"]').on('click', function(event) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($.attr(this, 'href')).offset().top
+            }, 500);
+        });
+    });
+    </script>
+    
+<!--Endo of scroll-->
+<div class="post-header">
+    <h2 class="title">{{ post.title }}</h2>
+    <div class="post-meta">
+        <div class="tags">{{ post.tag }}</div>
+        <div class="date">Posted on {{ post.date_added|date:"F d, Y" }}</div>
+        <div class="read-time">5 minutes read</div>
+    </div>
+    <hr>
+</div>
+
+<div class="post-image">
+    <img src="{{ post.image.url }}" alt="{{ post.image_alt }}">
+    <p class="image-source"><a href="{{ post.image.url }}" target="_blank">Image Source</a></p>
+</div>
+<div class="post-content-wrapper">
+    <div class="post-details">
+        <p><strong>{{ post.intro }}</strong></p>
+        <p>{{ post.body | safe }}</p>
+    </div>
+<!--     <div class="col-md-2 fixed-column">
+        <div class="fixed-content">
+            <p>This is the fixed column content.</p>
+        </div>
+    </div> -->
+    <div class="table-of-contents">
+        <h3>Table of Contents</h3>
+        <ul>
+            {% for heading in toc %}
+                <li><a href="#{{ heading.id }}">{{ heading.text }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</div>
+
+<!--Disqus comment-->
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://rbashish.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>    
+<!--End for Disqus comment-->
+
+
+{% endblock %}
