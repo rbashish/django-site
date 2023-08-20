@@ -1,1 +1,1 @@
-web: gunicorn rbsite.wsgi.application
+web: gunicorn rbsite.wsgi
